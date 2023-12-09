@@ -23,6 +23,5 @@ int main()
     dbg_out(n, m);
     cin >> n >> m;
     cout << n << m;
-
     return 0;
 }
