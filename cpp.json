@@ -10,6 +10,7 @@
 			"#define ll long long",
 			"using namespace std;",
 			"#define all(x) (x).begin(), (x).end()",
+			"ll lcm(ll a, ll b) { return a / __gcd(a, b) * b; }",
 			"",
 			"",
 			"// Debug, remove before submit.",
