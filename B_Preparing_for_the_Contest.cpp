@@ -12,7 +12,7 @@ template<typename Head, typename... Tail>
 void dbg_out(Head H, Tail... T) { cerr<<' '<< H; dbg_out(T...); }
 #define dbg(...) cerr << '(' << #__VA_ARGS__<<'):', dbg_out(__VA_ARGS__)*/
 
-int main()
+/*int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
@@ -60,6 +60,35 @@ int main()
             cout << arr[i] << " ";
         }
         cout << endl;
+    }
+
+    return 0;
+}*/
+
+// NEW CODE.
+// ALL THAT WE HAVE TO DO IS TO PRINT K NUMBERS IN INCREASING ORDER AND THEN N-K IN DECREASING.
+// SO PRINT K NUMBERS INCREASING FIRST, THEN N-K DECREASING, ALL FROM 1 TO N.
+
+int main()
+{
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int n, k;
+        cin >> n >> k;
+        for (int i = 1; i <= k; i++)
+        {
+            cout << i << " ";
+        }
+        for (int i = n; i > k; i--)
+        {
+            cout << i << " ";
+        }
+        cout << "\n";
     }
 
     return 0;
