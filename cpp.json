@@ -11,7 +11,7 @@
 			"using namespace std;",
 			"#define all(x) (x).begin(), (x).end()",
 			"ll lcm(ll a, ll b) { return a / __gcd(a, b) * b; }",
-			"",
+			"const int N = 1e5 + 10;",
 			"",
 			"int main()",
 			"{",
