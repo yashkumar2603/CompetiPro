@@ -10,42 +10,28 @@ const int N = 1e5 + 10;
 
 // the big number shows, that recursive solutions are prolly not allowed, as they will take a loot of time, so going to something using arrays.
 // will somehow be solved thru the pattern, in a single math equation, recognise the pattern
-
-/*ll rec(int n, ll cost)
+map<ll, ll> dp;
+ll solve(const ll n)
 {
-    double a, b;
-    if (n >= 2)
-    {
-        a = floor(n / 2);
-        b = ceil(n / 2);
-        cost += n;
-        if (a >= 2)
-        {
-            cost += a;
-            rec(a, cost);
-        }
-        if (b >= 2)
-        {
-            cost += b;
-            rec(b, cost);
-        }
-    }
-    return cost;
-}*/
+    if (n == 1)
+        return 0;
+    if (dp.count(n))
+        return dp[n];
+    const ll flr = n / 2, clr = (n + 1) / 2;
+    return dp[n] = n + solve(flr) + solve(clr);
+}
 
 void solution()
 {
     // write your code here
     ll x;
     cin >> x;
-    ll cost = 0;
     if (x < 2)
     {
         cout << 0 << nl;
         return;
     }
-
-    cout << cost << nl;
+    cout << solve(x) << nl;
 }
 int main()
 {
