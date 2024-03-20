@@ -8,9 +8,7 @@ const int N = 1e5 + 10;
 // Type slash-n here before u begin.
 #define nl "\n"
 
-// the big number shows, that recursive solutions are prolly not allowed, as they will take a loot of time, so going to something using arrays.
-// will somehow be solved thru the pattern, in a single math equation, recognise the pattern
-map<ll, ll> dp;
+map<ll, ll> dp; // stores the money needed for n to be broken down.
 ll solve(const ll n)
 {
     if (n == 1)
@@ -18,7 +16,7 @@ ll solve(const ll n)
     if (dp.count(n))
         return dp[n];
     const ll flr = n / 2, clr = (n + 1) / 2;
-    return dp[n] = n + solve(flr) + solve(clr);
+    return dp[n] = n + solve(flr) + solve(clr); // final money=>money in this step plus money in the 2 numbers formed.
 }
 
 void solution()

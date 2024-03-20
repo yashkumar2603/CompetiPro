@@ -3,8 +3,8 @@
 	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
 	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
 	// same ids are connected.
-	"CPP": {
-		"prefix": "CPP_boilerplate",
+	"C++": {
+		"prefix": "boilerplate",
 		"body": [
 			"// Link : ",
 			"#include<bits/stdc++.h>",
@@ -14,10 +14,11 @@
 			"ll lcm(ll a, ll b) { return a / __gcd(a, b) * b; }",
 			"const int N = 1e5 + 10;",
 			"// Type slash-n here before u begin.",
-			"#define nl \n",
+			"#define nl \"\\n\"",
+			"",
 			"",
 			"void solution(){",
-			"    //write your code here",
+			"    //write your code here$0",
 			"}",
 			"int main()",
 			"{",
@@ -29,8 +30,36 @@
 			"    }",
 			"    ",
 			"    return 0;",
-			"}",
+			"}"
 		],
-		"description": "Log output to console"
-	}
+		"description": "Boilerplate C++"
+	},
+	"Binary search": {
+		"prefix": "binary_search",
+		"body": [
+			"bool binary_search(const vector<int> &arr, int target)",
+			"{",
+			"    int left = 0, right = arr.size() - 1;",
+			"    while (left <= right)",
+			"    {",
+			"        int mid = left + (right - left) / 2;",
+			"        if (arr[mid] == target)",
+			"        {",
+			"            return true;",
+			"        }",
+			"        else if (arr[mid] < target)",
+			"        {",
+			"            left = mid + 1;",
+			"        }",
+			"        else",
+			"        {",
+			"            right = mid - 1;",
+			"        }",
+			"    }",
+			"    return false;",
+			"}"
+		],
+		"description": "Binary search"
+	},
 }
+//made using https://snippet-generator.app/ 

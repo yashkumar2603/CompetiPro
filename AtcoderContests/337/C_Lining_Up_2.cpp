@@ -10,25 +10,28 @@ int main()
     cin.tie(nullptr);
     int n;
     cin >> n;
-    vector<int> input;
     int in;
-    for (int i = 0; i < n; i++)
+    unordered_map<int, int> input;
+    for (int i = 1; i <= n; i++)
     {
         cin >> in;
-        input.push_back(in);
+        input[in] = i;
     }
-    vector<int>::iterator x;
-    x = find(input.begin(), input.end(), -1);
+    vector<int> ans(n);
+    ans[0] = (input[-1]);
+    int curr = input[-1];
 
-    vector<int> v;
-    v.push_back(x - input.begin() + 1);
-    for (int i = 0; i <= n; i++)
+    int i = 1;
+    while (i < n)
     {
-        v.push_back(find(input.begin(), input.end(), input[x - input.begin()] + 1) - input.begin() + 1);
+        ans[i] = input[curr];
+        i++;
+        curr = input[curr];
     }
     for (int i = 0; i < n; i++)
     {
-        cout << v[i] << " ";
+        cout << ans[i] << " ";
     }
+    cout << "\n";
     return 0;
 }
