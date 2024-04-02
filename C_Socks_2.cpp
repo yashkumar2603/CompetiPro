@@ -1,40 +1,31 @@
-
-// If odd, leave one and try to sort the best possible way from the remaining.
-// if even, try to match it with the neighbours to keep it best.
-
 #include <bits/stdc++.h>
-#define ll long long
+
 using namespace std;
-#define all(x) (x).begin(), (x).end()
-ll lcm(ll a, ll b) { return a / __gcd(a, b) * b; }
 
 int main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
     int n, k;
     cin >> n >> k;
-
-    int nums[n] = {2};
-    int in;
-
-    for (int i = 0; i < k; i++)
+    vector<int> a(k);
+    for (int &i : a)
+        cin >> i;
+    vector<int> pre(k + 1), suf(k + 1);
+    for (int i = 1; i <= k; i++)
     {
-        cin >> in;
-        nums[in]--;
+        pre[i] = pre[i - 1];
+        if (i % 2 == 0)
+            pre[i] += a[i - 1] - a[i - 2];
     }
-
-    bool flag = false;
-
-    if (k % 2 != 0)
+    for (int i = k - 1; i >= 0; i--)
     {
-        flag == true;
+        suf[i] = suf[i + 1];
+        if ((k - i) % 2 == 0)
+            suf[i] += a[i + 1] - a[i];
     }
-
-    for (int i = 0; i < n; i++)
+    int ans = 1e9;
+    for (int i = 0; i <= k; i += 2)
     {
-        if (nums[i] == 1)
+        ans = min(ans, pre[i] + suf[i]);
     }
-
-    return 0;
+    cout << ans << endl;
 }
