@@ -9,32 +9,25 @@ const int N = 1e5 + 10;
 
 void solution()
 {
-    // write your code here
     string s, t;
-    cin >> s;
-    cin >> t;
-    unordered_map<char, vector<int>> mp;
-
-    for (int i = 0; i < t.size(); i++)
+    cin >> s >> t;
+    int i = 0, j = 0;
+    while (i < s.size())
     {
-        mp[t[i]].push_back(i + 1);
-    }
-    map<char, int> printed;
-    vector<int> ans;
-    for (int i = 0; i < s.size(); i++)
-    {
-        if (printed[s[i]] != 1)
+        while (j < t.size())
         {
-            for (int j = 0; j < mp[s[i]].size(); j++)
+            if (s[i] == t[j])
             {
-                ans.push_back(mp[s[i]][j]);
+                cout << j + 1 << " ";
+                i++;
+                j++;
+            }
+            else
+            {
+                j++;
             }
         }
-        printed[s[i]] = 1;
     }
-    sort(ans.begin(), ans.end());
-    for (int i = 0; i < ans.size(); i++)
-        cout << ans[i] << " ";
 }
 int main()
 {
