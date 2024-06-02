@@ -12,23 +12,25 @@ void solution() {
     int n, t;
     cin >> n >> t;
     vector<int> a(t);
-    unordered_map<int, int> mod, div;
+    vector<int> row(n, 0), col(n, 0);
+    int d1 = 0, d2 = 0;
+    int ans = -1;
     for (int i = 0; i < t; i++) {
         cin >> a[i];
-        mod[a[i] % n]++;
-        div[a[i] / n]++;
-        if (div[a[i] / n] == n && mod.size() >= n) {
-            cout << i + 1 << nl;
-            return;
-        } else if (mod.size() >= n && div.size() >= n) {
-            cout << i + 1 << nl;
-            return;
-        } else if (mod[a[i] % n] == n && div.size() >= n) {
-            cout << i + 1 << nl;
-            return;
+        int r = (a[i] - 1) / n;
+        int c = (a[i] - 1) % n;
+        row[r] += 1;
+        col[c] += 1;
+        if (r == c)
+            d1++;
+        if (r + c == n - 1)
+            d2++;
+        if (row[r] == n || col[c] == n || d1 == n || d2 == n) {
+            ans = i + 1;
+            break;
         }
     }
-    cout << "-1" << nl;
+    cout << ans << nl;
 }
 int main() {
     ios_base::sync_with_stdio(0);
