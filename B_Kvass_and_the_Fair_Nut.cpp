@@ -9,25 +9,28 @@ const int N = 1e5 + 10;
 
 void solution() {
     // write your code here
-    ll n;
-    cin >> n;
+    ll n, s;
+    cin >> n >> s;
     vector<ll> v(n);
-    vector<ll> a(n);
-    // ll mi = LONG_LONG_MAX;
+    ll total = 0;
+    ll mi = LONG_LONG_MAX;
     for (ll i = 0; i < n; i++) {
         cin >> v[i];
-        a[i]--;
-        a[max(0ll, (i - v[i]))]++;
+        total += v[i];
+        mi = min(mi, v[i]);
     }
-    for (int i = 1; i < n; i++) {
-        a[i] += a[i - 1];
+    if (total < s) {
+        cout << "-1" << nl;
+        return;
     }
-
-    int cnt = 0;
-    for (int i = 0; i < n; ++i)
-        if (a[i] == 0)
-            ++cnt;
-    cout << cnt << nl;
+    for (ll i = 0; i < n; i++) {
+        s -= (v[i] - mi);
+    }
+    if (s <= 0) {
+        cout << mi << nl;
+        return;
+    } else
+        cout << (mi - (s + n - 1) / n) << nl;
 }
 int main() {
     ios_base::sync_with_stdio(0);
